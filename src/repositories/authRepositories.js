@@ -17,4 +17,8 @@ async function insertUser(email, password, name) {
     
 }
 
-export { getUserByEmail, insertUser };
+async function userSession(token, userId){
+    return connection.query('INSERT INTO sessions (token, "userId") VALUES ($1, $2)',[token, userId]);
+}
+
+export { getUserByEmail, insertUser, userSession };
